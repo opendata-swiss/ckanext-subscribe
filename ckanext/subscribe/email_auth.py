@@ -25,6 +25,7 @@ from six import text_type
 
 import ckan.plugins as p
 from ckan import model
+from ckan.plugins.toolkit import _
 from ckanext.subscribe import mailer
 from ckanext.subscribe.model import LoginCode
 
@@ -53,11 +54,11 @@ def get_subscription_confirmation_email_contents(code, subscription):
     email_vars['plain_text_footer'] = plain_text_footer
     email_vars['html_footer'] = html_footer
 
-    subject = '{site_title} subscription confirmed'.format(**email_vars)
+    subject = _('{site_title} subscription confirmed').format(**email_vars)
     # Make sure subject is only one line
     subject = subject.split('\n')[0]
 
-    html_body = '''
+    html_body = _('''
 <p>You have subscribed to notifications about:<br/>
 {object_type}: <a href="{object_link}">{object_title} ({object_name})</a></p>
 
@@ -66,8 +67,8 @@ def get_subscription_confirmation_email_contents(code, subscription):
 
 --
 {html_footer}
-'''.format(**email_vars)
-    plain_text_body = '''
+''').format(**email_vars)
+    plain_text_body = _('''
 You have subscribed to notifications about:
 {object_type}: {object_title} ({object_name})
 {object_link}
@@ -77,7 +78,7 @@ To manage subscriptions for {email}, click this link:
 
 --
 {plain_text_footer}
-'''.format(**email_vars)
+''').format(**email_vars)
     return subject, plain_text_body, html_body
 
 
@@ -99,11 +100,11 @@ def get_manage_email_contents(code, subscription=None, email=None):
     email_vars['plain_text_footer'] = plain_text_footer
     email_vars['html_footer'] = html_footer
 
-    subject = 'Manage {site_title} subscription'.format(**email_vars)
+    subject = _('Manage {site_title} subscription').format(**email_vars)
     # Make sure subject is only one line
     subject = subject.split('\n')[0]
 
-    html_body = '''
+    html_body = _('''
 <p>{site_title} subscription options<br/>
 
 <p>To manage subscriptions for {email}, click this link:<br/>
@@ -111,8 +112,8 @@ def get_manage_email_contents(code, subscription=None, email=None):
 
 --
 {html_footer}
-'''.format(**email_vars)
-    plain_text_body = '''
+''').format(**email_vars)
+    plain_text_body = _('''
 {site_title} subscription requested:
 
 <p>To manage subscriptions for {email}, click this link:<br/>
@@ -120,7 +121,7 @@ def get_manage_email_contents(code, subscription=None, email=None):
 
 --
 {plain_text_footer}
-'''.format(**email_vars)
+''').format(**email_vars)
     return subject, plain_text_body, html_body
 
 
@@ -129,18 +130,18 @@ def get_footer_contents(code, subscription=None, email=None):
 
     html_lines = []
     if subscription:
-        html_lines.append(
+        html_lines.append(_(
             'To stop receiving emails of this type: '
             '<a href="{unsubscribe_link}">'
             'unsubscribe from {object_type} "{object_title}"</a>'
-        )
+        ))
     else:
-        html_lines.append(
+        html_lines.append(_(
             'To stop receiving all subscription emails from {site_title}: '
             '<a href="{unsubscribe_all_link}">'
             'unsubscribe all</a>'
-        )
-    html_lines.append('<a href="{manage_link}">Manage settings</a>')
+        ))
+    html_lines.append(_('<a href="{manage_link}">Manage settings</a>'))
     html_footer = '\n'.join(
         '<p style="font-size:10px;line-height:200%;text-align:center;'
         'color:#9EA3A8=;padding-top:0px">{line}</p>'.format(line=line)
@@ -148,18 +149,18 @@ def get_footer_contents(code, subscription=None, email=None):
 
     plain_text_footer = ''
     if subscription:
-        plain_text_footer += '''
+        plain_text_footer += _('''
 You can unsubscribe from notifications emails for {object_type}: "{object_title}" by going to {unsubscribe_link}.
-'''.format(**email_vars)
+''').format(**email_vars)
     else:
-        plain_text_footer += (
+        plain_text_footer += (_(
             'To stop receiving all subscription emails from {site_title}: '
             '<a href="{unsubscribe_all_link}">'
             'unsubscribe all</a>'
-        ).format(**email_vars)
-    plain_text_footer += '''
+        )).format(**email_vars)
+    plain_text_footer += _('''
 Manage your settings at {manage_link}.
-'''.format(**email_vars)
+''').format(**email_vars)
     return plain_text_footer, html_footer
 
 
