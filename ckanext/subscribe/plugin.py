@@ -3,16 +3,19 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 
+from ckan.lib.plugins import DefaultTranslation
+
 from ckanext.subscribe import action
 from ckanext.subscribe import auth
 from ckanext.subscribe import model as subscribe_model
 
 
-class SubscribePlugin(plugins.SingletonPlugin):
+class SubscribePlugin(plugins.SingletonPlugin, DefaultTranslation):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IRoutes)
     plugins.implements(plugins.IActions)
     plugins.implements(plugins.IAuthFunctions)
+    plugins.implements(plugins.ITranslation, inherit=True)
 
     # IConfigurer
 
