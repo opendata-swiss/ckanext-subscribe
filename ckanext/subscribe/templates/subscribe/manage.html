@@ -9,10 +9,10 @@
 <article class="module">
   <div class="module-content">
 
-<h1>Manage subscriptions</h1>
+<h1>{{ _('Manage subscriptions') }}</h1>
 
-<p>Email: {{ email }}</p>
-<p>Subscriptions:</p>
+<p>{{ _('Email: {email}').format(email=email) }}</p>
+<p>{{ _('Subscriptions:') }}</p>
 {% if subscriptions %}
   <table id="subscriptions">
     {% for subscription in subscriptions %}

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-subscribe 1.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-10-05 13:06+0000\n"
+"POT-Creation-Date: 2022-10-05 13:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -290,6 +290,18 @@ msgstr ""
 msgid "Submit"
 msgstr ""
 
+#: ckanext/subscribe/templates/subscribe/manage.html:12
+msgid "Manage subscriptions"
+msgstr ""
+
+#: ckanext/subscribe/templates/subscribe/manage.html:14
+msgid "Email: {email}"
+msgstr ""
+
+#: ckanext/subscribe/templates/subscribe/manage.html:15
+msgid "Subscriptions:"
+msgstr ""
+
 #: ckanext/subscribe/templates/subscribe/manage.html:32
 msgid "Resend verification email"
 msgstr ""
@@ -308,6 +320,16 @@ msgstr ""
 
 #: ckanext/subscribe/templates/subscribe/manage.html:66
 msgid "Unsubscribe all"
+msgstr ""
+
+#: ckanext/subscribe/templates/subscribe/request_manage_code.html:10
+msgid "Email check"
+msgstr ""
+
+#: ckanext/subscribe/templates/subscribe/request_manage_code.html:12
+msgid ""
+"To access this functionality, please provide your email address, so we can "
+"send you a fresh access link to the subscription management page."
 msgstr ""
 
 #: ckanext/subscribe/templates/subscribe/request_manage_code.html:20
