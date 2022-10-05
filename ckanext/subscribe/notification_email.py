@@ -3,6 +3,7 @@ from webhelpers.html import HTML
 
 from ckan import plugins as p
 from ckan import model
+from ckan.plugins.toolkit import _
 
 from ckanext.subscribe import mailer
 from ckanext.subscribe.email_auth import get_footer_contents
@@ -28,11 +29,11 @@ def get_notification_email_contents(code, email, notifications):
     email_vars['plain_text_footer'] = plain_text_footer
     email_vars['html_footer'] = html_footer
 
-    subject = '{site_title} notification'.format(**email_vars)
+    subject = _('{site_title} notification').format(**email_vars)
     # Make sure subject is only one line
     subject = subject.split('\n')[0]
 
-    html_body = Template('''
+    html_body = Template(_('''
 <p>Changes have occurred in relation to your subscription(s)</p>
 
 {% for notification in notifications %}
@@ -52,8 +53,8 @@ def get_notification_email_contents(code, email, notifications):
 
 --
 {{ html_footer }}
-''').render(**email_vars)
-    plain_text_body = Template('''
+''')).render(**email_vars)
+    plain_text_body = Template(_('''
 Changes have occurred in relation to your subscription(s)
 
 {% for notification in notifications %}
@@ -68,7 +69,7 @@ Changes have occurred in relation to your subscription(s)
 
 --
 {{ plain_text_footer }}
-''').render(**email_vars)
+''')).render(**email_vars)
     return subject, plain_text_body, html_body
 
 

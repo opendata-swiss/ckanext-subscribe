@@ -7,10 +7,10 @@
 
 {% block primary_content %}
 
-<h1>Email check</h1>
+<h1>{{ _('Email check') }}</h1>
 
-<p>To access this functionality, please provide your email address, so we can
-   send you a fresh access link to the subscription management page.</p>
+<p>{% trans %}To access this functionality, please provide your email address, so we can
+   send you a fresh access link to the subscription management page.{% endtrans %}</p>
 
 <p>
   <form method='post' action="{{ h.url_for(controller='ckanext.subscribe.controller:SubscribeController', action='request_manage_code') }}" id="request-manage-code-form" enctype="multipart/form-data" class="form-inline">

@@ -28,24 +28,24 @@ def send_request_email(subscription):
 def get_verification_email_contents(subscription):
     email_vars = get_verification_email_vars(subscription)
 
-    subject = 'Confirm your request for {site_title} subscription'.format(**email_vars)
+    subject = p.toolkit._('Confirm your request for {site_title} subscription').format(**email_vars)
     # Make sure subject is only one line
     subject = subject.split('\n')[0]
 
-    html_body = '''
+    html_body = p.toolkit._('''
 <p>{site_title} subscription requested<br/>
     {object_type}: "{object_title}" ({object_name})</p>
 
 <p>To confirm this email subscription, click this link:<br/>
 <a href="{verification_link}">{verification_link}</a></p>
-'''.format(**email_vars)
-    plain_text_body = '''
+''').format(**email_vars)
+    plain_text_body = p.toolkit._('''
 {site_title} subscription requested:
 {object_type}: {object_title} ({object_name})
 
 To confirm this email subscription, click this link:
 {verification_link}
-'''.format(**email_vars)
+''').format(**email_vars)
     return subject, plain_text_body, html_body
 
 
