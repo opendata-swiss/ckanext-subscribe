@@ -31,5 +31,6 @@ groups:
         required: false
       - key: ckanext.subscribe.apply_recaptcha
         default: false
+        type: bool
         description: Whether to apply reCAPTCHA to the dataset subscription form
         required: false
