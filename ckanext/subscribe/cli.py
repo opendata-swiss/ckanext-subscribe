@@ -6,6 +6,7 @@ import ckan.lib.cli as cli
 import ckan.plugins as p
 
 
+# TODO: update these to use click!
 class subscribeCommand(cli.CkanCommand):
     """subscribe commands
 

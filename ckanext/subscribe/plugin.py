@@ -7,6 +7,7 @@ from ckanext.subscribe.blueprints import subscribe_blueprint
 from ckanext.subscribe.interfaces import ISubscribe
 
 
+@tk.blanket.config_declarations
 class SubscribePlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IActions)
