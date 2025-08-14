@@ -7,8 +7,6 @@ from ckan import model
 
 from ckanext.activity.model import Activity
 
-log = __import__("logging").getLogger(__name__)
-
 
 @click.group()
 def subscribe():
@@ -30,7 +28,7 @@ def send_any_notifications(repeatedly):
         )
         if not repeatedly:
             break
-        log.debug("Repeating in 10s")
+        click.echo("Repeating in 10s")
         time.sleep(10)
 
 
