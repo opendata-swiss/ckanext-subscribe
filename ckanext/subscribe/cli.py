@@ -20,16 +20,20 @@ def subscribe():
     default=False,
     help="Repeat every 10s",
 )
-def send_any_notifications(repeatedly):
+@click.pass_context
+def send_any_notifications(ctx, repeatedly):
     """Check for activity and for any subscribers, send emails with the notifications."""
-    while True:
-        p.toolkit.get_action("subscribe_send_any_notifications")(
-            {"model": model, "ignore_auth": True}, {}
-        )
-        if not repeatedly:
-            break
-        click.echo("Repeating in 10s")
-        time.sleep(10)
+    flask_app = ctx.meta["flask_app"]
+
+    with flask_app.test_request_context():
+        while True:
+            p.toolkit.get_action("subscribe_send_any_notifications")(
+                {"model": model, "ignore_auth": True}, {}
+            )
+            if not repeatedly:
+                break
+            click.echo("Repeating in 10s")
+            time.sleep(10)
 
 
 @subscribe.command("create-test-activity")
