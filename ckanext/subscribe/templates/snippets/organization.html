@@ -15,7 +15,7 @@
   {% if current_user.is_authenticated %}
     {{ super() }}
   {% else %}
-    {% asset 'subscribe/css/subscribe' %}
+    {% asset 'subscribe/subscribe-css' %}
     <div class="nums">
       {% import 'macros/form.html' as form %}
       <!-- {{ form.errors(error_summary) }} -->
